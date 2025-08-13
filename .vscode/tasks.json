@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "docker-build",
+      "type": "shell",
+      "command": "docker build -t time-api ."
+    },
+    {
+      "label": "docker-stop",
+      "type": "shell",
+      "command": "docker rm -f time-api-dev || true",
+    },
+    {
+      "label": "docker-run",
+      "type": "shell",
+      "dependsOn": ["docker-stop", "docker-build"],
+      "command": "docker run -d --name time-api-dev -p 3000:3000 -e TZ=America/Argentina/Cordoba time-api"
+    }
+  ]
+}

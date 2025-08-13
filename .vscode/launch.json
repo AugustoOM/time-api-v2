@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Time API: build, run y abrir",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000/api/time",
+      "preLaunchTask": "docker-run",
+      "postDebugTask": "docker-stop",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}

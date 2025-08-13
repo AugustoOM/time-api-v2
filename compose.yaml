@@ -1,0 +1,14 @@
+services:
+  time-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: time-api-dev
+    environment:
+      - TZ=America/Argentina/Cordoba
+      - NODE_ENV=production
+      # Render usa PORT dinámico, pero en local mapeamos al 3000 del contenedor
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
