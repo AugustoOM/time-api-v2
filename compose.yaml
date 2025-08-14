@@ -12,3 +12,22 @@ services:
     ports:
       - "3000:3000"
     restart: unless-stopped
+    networks:
+      - time-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: time-frontend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    depends_on:
+      - time-api
+    networks:
+      - time-network
+
+networks:
+  time-network:
+    driver: bridge

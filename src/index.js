@@ -1,7 +1,14 @@
 import express from "express";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Enable CORS for all routes
+app.use(cors({
+  origin: true, // Allow all origins
+  credentials: true
+}));
 
 app.get("/api/time", (_req, res) => {
   const now = new Date();
